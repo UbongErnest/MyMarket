@@ -1,0 +1,80 @@
+/* Custom styles for WE Student Marketplace */
+
+/* Additional utility classes for animations */
+@keyframes slide-in-from-top-2 {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-top-5 {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.slide-in-from-top-2 {
+  animation: slide-in-from-top-2 0.3s ease-out;
+}
+
+.slide-in-from-top-5 {
+  animation: slide-in-from-top-5 0.3s ease-out;
+}
+
+.slide-in-from-right {
+  animation: slide-in-from-right 0.3s ease-out;
+}
+
+.fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Additional responsive utilities */
+@media (max-width: 768px) {
+  .md\\:hidden {
+    display: none;
+  }
+  
+  .md\\:border-x {
+    border-left-width: 1px;
+    border-right-width: 1px;
+  }
+  
+  .md\\:border-slate-800 {
+    border-color: rgb(30 41 59);
+  }
+}

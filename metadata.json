@@ -1,0 +1,5 @@
+{
+  "name": "MyMarket",
+  "description": "A robust classified ads marketplace allowing users to buy, sell, and chat. Features AI-powered listing generation.",
+  "requestFramePermissions": []
+}
