@@ -93,13 +93,13 @@ export const LoginView: React.FC<AuthProps> = ({ onLogin, onNavigate }) => {
             ) : (
                 <img 
                     src="https://res.cloudinary.com/dfn83v6jq/image/upload/v1740636841/IMG-20250227-WA0001_1_m5f0k7.jpg" 
-                    alt="WE Logo" 
+                    alt="We Logo"
                     className="w-16 h-16 rounded-xl shadow-lg shadow-purple-500/20 mb-4 object-cover"
                     onError={() => setLogoError(true)}
                 />
             )}
             
-            <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300 mb-2 tracking-tight">WE</h1>
+            <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300 mb-2 tracking-tight">We</h1>
             <p className="text-slate-400 font-medium">Student Marketplace</p>
             <p className="text-purple-400/90 text-xs mt-2 font-medium italic tracking-wide">Communicate better with your products</p>
           </div>
@@ -289,7 +289,7 @@ export const RegisterView: React.FC<AuthProps> = ({ onLogin, onNavigate }) => {
       </div>
 
       <div className="relative z-10 mb-6">
-        <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Join WE</h1>
+        <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Join We</h1>
         <p className="text-slate-400 text-sm">Step {step} of 2 • {step === 1 ? 'Personal Details' : 'Student Profile'}</p>
         <div className="w-full bg-slate-800/50 h-1.5 mt-4 rounded-full overflow-hidden backdrop-blur-sm">
             <div className={`h-full bg-gradient-to-r from-purple-600 to-pink-500 transition-all duration-500 ease-out ${step === 1 ? 'w-1/2' : 'w-full'}`}></div>

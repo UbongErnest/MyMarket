@@ -1,17 +1,19 @@
 
 {
-  "short_name": "WE",
-  "name": "WE Marketplace",
+  "short_name": "We",
+  "name": "We",
   "icons": [
     {
       "src": "https://res.cloudinary.com/dfn83v6jq/image/upload/v1740636841/IMG-20250227-WA0001_1_m5f0k7.jpg",
       "type": "image/jpeg",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "https://res.cloudinary.com/dfn83v6jq/image/upload/v1740636841/IMG-20250227-WA0001_1_m5f0k7.jpg",
       "type": "image/jpeg",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",

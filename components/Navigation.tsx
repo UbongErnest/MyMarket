@@ -92,12 +92,12 @@ export const TopBar: React.FC<TopBarProps> = ({ currentUser, searchValue, onSear
                     ) : (
                         <img 
                             src="https://res.cloudinary.com/dfn83v6jq/image/upload/v1740636841/IMG-20250227-WA0001_1_m5f0k7.jpg" 
-                            alt="WE Logo" 
+                            alt="We Logo"
                             className="w-8 h-8 rounded-lg shadow-lg shadow-purple-500/20 object-cover"
                             onError={() => setLogoError(true)}
                         />
                     )}
-                    <h1 className="text-white text-xl font-extrabold tracking-tight">WE</h1>
+                    <h1 className="text-white text-xl font-extrabold tracking-tight">We</h1>
                 </div>
                 <div className="flex gap-4 text-white">
                     <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-sm font-bold border border-white/10 overflow-hidden shadow-inner ring-2 ring-white/5">

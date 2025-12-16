@@ -25,7 +25,7 @@ export const ProductDetailView: React.FC<ProductDetailProps> = ({ product, curre
   };
 
   const handleReport = () => {
-      const subject = "Report Product from WE App";
+      const subject = "Report Product from We App";
       const body = `I would like to report the following product:
 
 Product Name: ${product.title}
