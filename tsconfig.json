@@ -11,7 +11,8 @@
     ],
     "skipLibCheck": true,
     "types": [
-      "node"
+      "node",
+      "lucide-react"
     ],
     "moduleResolution": "bundler",
     "isolatedModules": true,

@@ -455,6 +455,14 @@ export const ForgotPasswordView: React.FC<AuthProps> = ({ onNavigate }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  React.useEffect(() => {
+    if (!sent) return;
+    const timer = window.setTimeout(() => {
+      onNavigate('login');
+    }, 2500);
+    return () => window.clearTimeout(timer);
+  }, [sent, onNavigate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');

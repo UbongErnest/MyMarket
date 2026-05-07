@@ -124,16 +124,19 @@ function App() {
       const unsubscribe = onSnapshot(q, (snapshot) => {
           const loadedProducts = snapshot.docs.map(doc => {
               const data = doc.data();
-              // Calculate relative time for display
+              // Calculate relative time for display and support Firestore Timestamp values
               let timeDisplay = 'Just now';
               try {
-                  const postedDate = new Date(data.postedDate);
-                  const now = new Date();
-                  const diffHrs = Math.floor((now.getTime() - postedDate.getTime()) / (1000 * 60 * 60));
-                  if (diffHrs > 24) timeDisplay = `${Math.floor(diffHrs / 24)} days ago`;
-                  else if (diffHrs > 0) timeDisplay = `${diffHrs} hours ago`;
+                  const rawPostedDate = data.postedDate;
+                  const postedDate = rawPostedDate?.toDate ? rawPostedDate.toDate() : new Date(rawPostedDate);
+                  if (!isNaN(postedDate.getTime())) {
+                      const now = new Date();
+                      const diffHrs = Math.floor((now.getTime() - postedDate.getTime()) / (1000 * 60 * 60));
+                      if (diffHrs > 24) timeDisplay = `${Math.floor(diffHrs / 24)} days ago`;
+                      else if (diffHrs > 0) timeDisplay = `${diffHrs} hours ago`;
+                  }
               } catch (e) {
-                  // Fallback
+                  // Fallback to default
               }
 
               return { 
@@ -229,6 +232,11 @@ function App() {
       setSearchQuery('');
   }
 
+  const handleAuthSuccess = () => {
+      setAuthView('login');
+      setCurrentTab('home');
+  }
+
   if (loadingUser) {
       return (
           <div className="min-h-screen bg-slate-950 flex items-center justify-center text-emerald-500">
@@ -240,15 +248,17 @@ function App() {
   // Auth Flow
   if (!currentUser) {
       if (authView === 'login') {
-          return <LoginView onLogin={() => {}} onNavigate={setAuthView} />;
+          return <LoginView onLogin={handleAuthSuccess} onNavigate={setAuthView} />;
       }
       if (authView === 'register') {
-          return <RegisterView onLogin={() => {}} onNavigate={setAuthView} />;
+          return <RegisterView onLogin={handleAuthSuccess} onNavigate={setAuthView} />;
       }
       if (authView === 'forgot-password') {
-          return <ForgotPasswordView onLogin={() => {}} onNavigate={setAuthView} />;
+          return <ForgotPasswordView onLogin={handleAuthSuccess} onNavigate={setAuthView} />;
       }
   }
+
+  const loggedInUser = currentUser!;
 
   // App Flow
   const renderView = () => {
@@ -269,7 +279,7 @@ function App() {
     if (currentTab === 'chat' && selectedChatId) {
         return (
             <ChatRoomView 
-                currentUser={currentUser}
+                currentUser={loggedInUser}
                 chatId={selectedChatId} 
                 onBack={() => setSelectedChatId(null)} 
                 onViewProfile={(user) => setViewingSeller(user)}
@@ -285,7 +295,7 @@ function App() {
       return (
         <ProductDetailView 
             product={selectedProduct}
-            currentUser={currentUser}
+            currentUser={loggedInUser}
             onBack={() => setSelectedProduct(null)} 
             onChat={(chatId) => {
                 setSelectedProduct(null);
@@ -298,7 +308,7 @@ function App() {
     }
 
     if (currentTab === 'sell') {
-      return <SellView onBack={() => setCurrentTab('home')} currentUser={currentUser} />;
+      return <SellView onBack={() => setCurrentTab('home')} currentUser={loggedInUser} />;
     }
 
     switch (currentTab) {
@@ -306,7 +316,7 @@ function App() {
         return (
             <>
                 <TopBar 
-                    currentUser={currentUser} 
+                    currentUser={loggedInUser} 
                     searchValue={searchQuery}
                     onSearchChange={setSearchQuery}
                 />
@@ -322,11 +332,11 @@ function App() {
             </>
         );
       case 'chat':
-        return <ChatListView currentUser={currentUser} onChatSelect={setSelectedChatId} onBack={() => setCurrentTab('home')} />;
+        return <ChatListView currentUser={loggedInUser} onChatSelect={setSelectedChatId} onBack={() => setCurrentTab('home')} />;
       case 'profile':
         return (
             <ProfileView 
-                currentUser={currentUser}
+                currentUser={loggedInUser}
                 userProducts={products}
                 onUpdateUser={handleUpdateUser}
                 onUpdateProductStatus={handleUpdateProductStatus}
@@ -339,7 +349,7 @@ function App() {
         return (
             <>
                 <TopBar 
-                    currentUser={currentUser} 
+                    currentUser={loggedInUser} 
                     searchValue={searchQuery}
                     onSearchChange={setSearchQuery}
                 />

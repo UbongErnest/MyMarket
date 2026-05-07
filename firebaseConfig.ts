@@ -3,20 +3,22 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getAnalytics } from "firebase/analytics";
 
-// Configured for Project: mymarket-6a23e
+// Configured for Project: wemarket-9ad6a
 const firebaseConfig = {
-  apiKey: "AIzaSyCon1jQQCifbBihNA1Q7byLie4GFmDeeXY",
-  authDomain: "mymarket-6a23e.firebaseapp.com",
-  projectId: "mymarket-6a23e",
-  storageBucket: "mymarket-6a23e.firebasestorage.app",
-  messagingSenderId: "282889168962",
-  appId: "1:282889168962:web:4699ac777362c993d8a5db",
-  measurementId: "G-S7HYJFS39J"
+  apiKey: "AIzaSyASnN5_qWb9DTMgR8rvYpKPb7KPqMHr-f4",
+  authDomain: "wemarket-9ad6a.firebaseapp.com",
+  projectId: "wemarket-9ad6a",
+  storageBucket: "wemarket-9ad6a.firebasestorage.app",
+  messagingSenderId: "29481151738",
+  appId: "1:29481151738:web:07fcb622a550133016ad43",
+  measurementId: "G-S10RYRS6BR"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 // Initialize Services
 export const auth = getAuth(app);

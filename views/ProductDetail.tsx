@@ -13,7 +13,7 @@ interface ProductDetailProps {
   onViewSeller: (seller: User) => void;
 }
 
-export const ProductDetailView: React.FC<ProductDetailProps> = ({ product, currentUser, onBack, onChat, onViewSeller }) => {
+export const ProductDetailView: React.FC<ProductDetailProps> = ({ product, currentUser, onBack, onChat, onViewSeller }: ProductDetailProps) => {
   const [startingChat, setStartingChat] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
